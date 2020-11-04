@@ -1,0 +1,26 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+    <div class="text-center"><br>
+    <h1>Ankit's Portfolio </h1>
+    </div>
+    <br>
+
+    {% load static %}
+
+    <img src="{% static "portfolio/raptor.jpeg" %}" class="rounded mx-auto d-block" height=500,width=400>
+    <br>
+    <a href="{% url 'blogs:bloghome' %}">BlogLink</a>
+
+    {% for data in display %}
+    <h4> {{data.title}} </h4>
+      {{data.description}}
+      <br>
+      <img src="{{data.image.url}}" height=300,width=200>
+      <br>
+        {%if data.url%}
+        <a href="{{data.url}}">Link</a>
+        {%endif%}
+    {%endfor%}
+
+{% endblock %}
